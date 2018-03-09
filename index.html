@@ -1,0 +1,439 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>IMSN</title>
+    <meta name="Keywords" content="IMIMSN,IM即时通讯,即时通讯平台,IM通讯软件">
+    <link rel="stylesheet" href="css/common_v3.css" type="text/css" />
+    <link rel="stylesheet" href="css/service_im_v3.css" type="text/css" />
+    <link rel="icon" href="favicon.ico" />
+    <!--<link rel="stylesheet" href="common_v3.css" type="text/css" />-->
+    <!--<link rel="stylesheet" href="service_im_v3.css" type="text/css" />-->
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="js/sub_menu.js"></script>
+    <script type="text/javascript" src="js/jquery.superslide.2.1.js"></script>
+    <script type="text/javascript" src="js/service_im.js"></script>
+    <script type="text/javascript">
+        "use strict";
+    var topFlag = 'service';
+    $(document).ready(function() {
+          var index = window.location.hash.replace(/[^\d]/ig,'')
+                $('.link a').eq(index - 1).addClass('active').siblings().removeClass('active')
+                $('.tab').eq(index - 1).show().siblings('.tab').hide()
+                $('.link a').on('click', function () {
+                    $(this).addClass('active').siblings().removeClass('active')
+                    $('.tab').eq($(this).index()).show().siblings('.tab').hide()
+                })
+
+        var length,
+            currentIndex = 0,
+            interval,
+            hasStarted = false, //是否已经开始轮播 
+            t = 5000; //轮播时间间隔 
+        length = $('.slider-panel').length;
+        //将除了第一张图片隐藏 
+        $('.slider-panel:not(:first)').hide();
+        //将第一个slider-item设为激活状态 
+        $('.slider-item:first').addClass('slider-item-selected');
+        //隐藏向前、向后翻按钮 
+        $('.slider-page').hide();
+        //鼠标上悬时显示向前、向后翻按钮,停止滑动，鼠标离开时隐藏向前、向后翻按钮，开始滑动 
+        $('.slider-panel, .slider-pre, .slider-next').hover(function() {
+            stop();
+            $('.slider-page').show();
+        }, function() {
+            $('.slider-page').hide();
+            start();
+        });
+        $('.slider-item').hover(function(e) {
+            stop();
+            var preIndex = $(".slider-item").filter(".slider-item-selected").index();
+            currentIndex = $(this).index();
+            play(preIndex, currentIndex);
+        }, function() {
+            start();
+        });
+        $('.slider-pre').unbind('click');
+        $('.slider-pre').bind('click', function() {
+            pre();
+        });
+        $('.slider-next').unbind('click');
+        $('.slider-next').bind('click', function() {
+            next();
+        });
+        /** 
+         * 向前翻页 
+         */
+        function pre() {
+            var preIndex = currentIndex;
+            currentIndex = (--currentIndex + length) % length;
+            play(preIndex, currentIndex);
+        }
+        /** 
+         * 向后翻页 
+         */
+        function next() {
+            var preIndex = currentIndex;
+            currentIndex = ++currentIndex % length;
+            play(preIndex, currentIndex);
+        }
+        /** 
+         * 从preIndex页翻到currentIndex页 
+         * preIndex 整数，翻页的起始页 
+         * currentIndex 整数，翻到的那页 
+         */
+        function play(preIndex, currentIndex) {
+            $('.slider-panel').eq(preIndex).fadeOut(500)
+                .parent().children().eq(currentIndex).fadeIn(1000);
+            $('.slider-item').removeClass('slider-item-selected');
+            $('.slider-item').eq(currentIndex).addClass('slider-item-selected');
+        }
+        /** 
+         * 开始轮播 
+         */
+        function start() {
+            if (!hasStarted) {
+                hasStarted = true;
+                interval = setInterval(next, t);
+            }
+        }
+        /** 
+         * 停止轮播 
+         */
+        function stop() {
+            clearInterval(interval);
+            hasStarted = false;
+        }
+        //开始轮播 
+        start();
+    });
+    </script>
+
+</head>
+
+<body>
+    <div class="wrap" style="min-width:1050px;">
+        <!-- 背景层 -->
+        <div class="fixbg"></div>
+       
+        <div class="pagetop fixed" style="width: 100%;">
+			<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- <link rel="stylesheet" href="/common_v3.css" type="text/css" />  -->
+<!-- <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.superslide.2.1.js"></script>
+<script type="text/javascript" src="js/jquery.fullpage.min.js"></script>
+<script type="text/javascript" src="js/jquery.slimscroll.min.js"></script>
+<script type="text/javascript" src="js/layer.min.js"></script>
+<script type="text/javascript" src="js/lazyfade.js"></script>-->
+<script type="text/javascript" src="js/countcode.js"></script> 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="js/8bb7972ab3d64d53b1c03598c87d8e78.js"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-49664725-1');
+</script>
+
+    
+<script type="text/javascript">
+var projectName ="";
+var path="";
+var flag=true;
+function getRootPath_web() {	
+	if(path!=""){
+		return path;
+	}
+	if (!window.location.origin) {
+		window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port: '');
+	}
+	path=location.origin;
+    path=path+projectName;
+    return path;
+}
+	
+	/* hover效果加箭头  */
+	 $("#produce .list a,#doc .box a span,#doc ul a,#help .box a span").hover(function(){
+		$(this).text($(this).text()+">");
+	},function(){
+		var text=$(this).text();
+		$(this).text(text.substring(0,text.length-1));
+	}); 
+});
+</script>
+
+    
+</head>
+<body>
+	<div class="top">
+		<div class="header">
+			<div class="logo"><a href="/" class="logoimg"></a></div> 
+			<ul class="navlist">
+				<li>
+					<a href="" class="link"><span class="name">主页</span>
+					</a>
+				</li>
+			    <li>
+			    	<a href="#section2" class="link" target="_self">
+			    		<span class="name">IMSN</span>
+			    	</a>
+			    </li>
+			    <li>
+			    	<a href="#quick" class="link" target="_self">
+			    		<span class="name">产品优势</span>
+			    	</a>
+			    </li>
+			    <li>
+			    	<a href="#share" class="link" target="_self">
+			    		<span class="name">应用范围</span>
+			    	</a>
+			    </li>
+			</ul>
+		</div>
+	</div>
+		</div>
+        <div class="fills_block" ></div>
+        <div class="carousel_figure"   >
+        	<div class="slider"  >
+		        <ul class="slider-main" >
+		            <li class="slider-panel"   >
+		                <a href="javascript:void(0);" target="_self" class="banner_link banner_01" >
+                            <img alt="IMSN" title="IMSN" src="picture/implus_banner01-new.png" class="banner_img"  >
+                        </a>
+		            </li>
+		            <li class="slider-panel"  style="display: none;"  >
+		                <a href="javascript:void(0);" target="_self" class=" banner_01 banner_02" >
+                            <img alt="IMSN" title="IMSN" src="picture/implus_banner02.jpg" class="banner_img  banner02"  >
+                         </a>
+		            </li>
+		            <li class="slider-panel"  style="display: none;" >
+		                <a href="javascript:void(0);" target="_self" class=" banner_01 banner_03" >
+                            <img alt="IMSN" title="IMSN" src="picture/implus_banner03.jpg" class="banner_img banner03" >
+                        </a>
+		            </li>
+		        </ul>
+		        <div class="slider-extra"  >
+		            <ul class="slider-nav" >
+		                <li class="slider-item"></li>
+		                <li class="slider-item"></li>
+		                <li class="slider-item"></li>
+		                <!--<li class="slider-item"></li>-->
+		            </ul>
+		            <div class="slider-page"  >
+		                <a class="slider-pre" href="javascript:;;" ><</a>
+		                <a class="slider-next" href="javascript:;;" >></a>
+		            </div>
+		        </div>
+		    </div>
+        </div>
+        <div class="section section2" id="section2" style="margin-top: 540px;" >
+            <div class="dx_div2" id="dx_div2">
+                <div class="dx_div2_con">
+                    <img src="picture/im-19.jpg" class="title" />
+                    <p class="con">支持推送、多终端登录、历史消息、广播、数据统计，可扩展位置分享、已读标记、输入中…</p>
+                    <ul  class="link">
+                        <a href="#tab1" class="active"><li >即时消息/单聊</li></a>
+                        <a href="#tab2"><li>群组/讨论组</li></a>
+                        <a href="#tab3"><li>语音留言</li></a>
+                        <a href="#tab4"><li>实时音视频</li></a>
+                        <a href="#tab5"><li>音视频会议</li></a>
+                        <!--<a href="#tab6"><li>红包</li></a>-->
+                        <a href="#tab7"><li>对话机器人</li></a>
+                        <!--a href="#tab8"><li>互动白板</li></a>-->
+                        <a href="#tab9"><li style="background-image: none;">聊天室</li></a>
+                    </ul>
+                    
+                    <div class="tab tab0">
+                        <img src="picture/im-2.jpg" />
+                        <div class="content">
+                            <p>即时消息/单聊</p>
+                            <div class="wenzi">基础功能，文字、图片、表情、语音、文件等，可基于 手机联系人、通过通讯录、原有用户及好友关系进行通 讯满足用户间的即时沟通。</div>
+                            <div class="icon">
+                                <i class="i1">文字</i><i class="i2">图片</i><i class="i3">表情</i><i class="i4">语音</i><i class="i5">文件</i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab tab1">
+                        <img src="picture/im-3.jpg" />
+                        <div class="content">
+                            <p>群组/讨论组</p>
+                            <div class="wenzi">灵活的创建方式、丰富的权限及管理功能提供群组、讨论组、聊天室等不同的群聊解决方案满足多人移动沟通的需求。</div>
+                            <div class="icon">
+                                <i class="i6">讨论组</i><i class="i7">群组</i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab tab2">
+                        <img src="picture/im-4.jpg" />
+                        <div class="content">
+                            <p>语音留言</p>
+                            <div class="wenzi">按住说话发送语音的方式当然少不了.免费、清晰、完美的传达,让每一次沟通都充满乐趣,边说边传，有效提升发送速度. 支持ASR将语音转换成文字显示
+                            </div>
+                            <div class="icon">
+                                <i class="i8">语音</i><i class="i9"> ASR </i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab tab3">
+                        <img src="picture/im-5.jpg" />
+                        <div class="content">
+                            <p>实时语音视频</p>
+                            <div class="wenzi">点击呼叫即可，平台已完成点对点通话及视频所需的一切,键盘、静音、扬声器、呼转都支持,通话清晰、视频流畅，带宽占用低</div>
+                            <div class="icon">
+                                <i class="i10">语音</i><i class="i11">视频</i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab tab4">
+                        <img src="picture/im-6.jpg" />
+                        <div class="content">
+                            <p>音视频会议</p>
+                            <div class="wenzi">支持同一房间或群组的多人语音群聊，一对多视频、视频会议 具备管理员功能，一对多视频有效降低各方宽带占用
+                            </div>
+                            <div class="icon">
+                                <i class="i10">语音群聊</i><i class="i11">多人视频</i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab tab6">
+                        <img src="picture/im-7.jpg" />
+                        <div class="content">
+                            <p>对话机器人</p>
+                            <div class="wenzi">在IM场景下快速实现机器人功能，接入智能对话引擎，真正做到机器与人无障碍沟通。自成长知识库使机器人在自定义场景中快速成长，越用越准确，节省人力，降低成本。</div>
+                            <div class="icon" style="margin-top: 20px;margin-bottom: 0px;">
+                                <i class="i16">客服</i><i class="i14">教育</i><i class="i17">办公</i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab tab8">
+                        <img src="picture/im-24.jpg" />
+                        <div class="content">
+                            <p>聊天室</p>
+                            <div class="wenzi">高并发消息分发服务，聊天记录云存储功能；稳定流畅的互动 : 点赞、发礼物等多种消息类型；灵活管理员权限、黑名单用户、个人与全局禁言、视频美颜等实用功能,在线人数无上限</div>
+                            <div class="icon">
+                                <i class="i13">娱乐</i>
+                                <i class="i14">教育</i>
+                                <i class="i15">电商</i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="quick" id="quick">
+                <div class="content">
+                    <img src="picture/im-21.png" class="title" />
+                    <p class="con" style="color: #8e8e8e;">
+                        <登陆快 ,发送消息快>
+                            <省电 ,省流量>
+                                <不丢消息 ,99.999%的稳定性>
+                    </p>
+                    <ul>
+                        <li><img src="picture/im-14.jpg" alt="" />
+                            <p class="title">稳定可靠</p>
+                            <p>采用动态智能DNS掉线快速重连机制，
+                                <Br>消息排重持续重连直至到达</p>
+                        </li>
+                        <li><img src="picture/im-25.jpg" alt="" />
+                            <p class="title">海量并发</p>
+                            <p>10年经验，稳定支撑多款亿级用户产品，
+                                <Br>亿级消息并发即时到达</p>
+                        </li>
+                        <li style="margin-right: 0;"><img src="picture/im-16.jpg" alt="" />
+                            <p class="title">数据安全</p>
+                            <p>采用私有二进制通讯协议及国密算法
+                                <br>数据全程加密，安全可靠</p>
+                        </li>
+                        <li><img src="picture/im-26.jpg" alt="" />
+                            <p class="title">大数据</p>
+                            <p>数十项指标，包括活跃度行为分析
+                                <br>群组统计等通过大数据洞察APP活力</p>
+                        </li>
+                        <li><img src="picture/im-27.jpg" alt="" />
+                            <p class="title">极简集成</p>
+                            <p>提供详细全面的文档，周到专业的技术支持，
+                                <br>简洁易用的接口一天实现通讯功能</p>
+                        </li>
+                        <li style="margin-right: 0;"><img src="picture/im-13.jpg" alt="" />
+                            <p class="title">全球节点</p>
+                            <p>异地多机房服务集群覆盖全球范围，
+                                <Br>架构灵活支持水平自动伸缩</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--qq群-->
+            <div class="qqqun second">
+                <div class="content">
+                    <img src="picture/im-31.jpg" alt="" />
+                </div>
+            </div>
+            <!-- 全程式相应 -->
+            <div class="qcresponse">
+                <div class="content">
+                    <ul>
+                        <li>·&nbsp;专业技术研发团队</li>
+                        <li>·&nbsp;专属客户顾问1对1咨询</li>
+                        <li>·&nbsp;7x24小时专业运维服务</li>
+                    </ul>
+                </div>
+            </div>
+            <!--公有服务-->
+            <div class="sharyun gongyou" id="share">
+               <div class="content">
+                    <img src="picture/im-56.png" class="title" />
+                    <p class="con" style="color: #afafaf;">
+                        应用于各种企业办公、社交、电商场景,快速提升活跃度增强用户粘性</a>
+                    </p>
+                    <div class="judgebox">
+                        <div class="for_title logo_bg1">
+                            <p>
+                                个人IM，主要是以个人用户使用为主，开放式的会员资料，非赢利目的，方便聊天、交友、娱乐，以网站为辅、软件为主，免费使用为辅、增值收费为主。
+                            </p>
+                        </div>
+                        <div class="for_title logo_bg2">
+                            <p>
+                               商务IM的主要功用，是实现了寻找客户资源或便于商务联系，以低成本实现商务交流或工作交流。此类以中小企业、个人实现买卖为主，外企方便跨地域工作交流为主。
+                            </p>
+                        </div>
+                        <div class="for_title logo_bg3">
+                            <p>
+                                企业IM，一种是以企业内部办公为主，建立员工交流平台；另一种是以即时通讯为基础、系统整合、边缘功能，企业IM对信息类软件的“互通”接口具备否，将被作为软件被选用的重要条件。
+                            </p>
+                        </div>
+                        <div class="for_title logo_bg4">
+                            <p class="kples">
+                                主要方便于某些行业或领域使用的IM软件，也包括行业网站所推出的IM软件，不被大众所知，主要在某个行业内小范围使用。行业IM软件，主要属于定制服务。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="js/cookieutil.js"></script> 
+</head>
+<body>
+<div class="footerwrap">
+<div class="copyright">
+	<div class="copycon">
+        <p class="con"><center><a href="javascript:void(0);" style="color:#ffffff; font-size:20px;">© Copyright  IMSN  All Rights Reserved</a>  </center></p>
+        <p class="con">
+        	<span style="padding-right:12px;"></span>
+        	<span style="padding-right:12px;"></span>
+        	<span></span>
+        </p>
+    </div>
+</div>
+</div>
+</body>
+</html>
+    </div>
+</body>
+
+</html>
